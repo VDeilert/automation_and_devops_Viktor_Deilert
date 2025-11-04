@@ -11,6 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag hello-world:latest hello-world:1.5 .
+      run: docker build . --file Dockerfile --tag hello-world:latest --tag hello-world:1.5
+ 
+    
+    - name: Build the Docker image
+    - uses: MaximilianoBz/dockerhub-buildpush@v1.1
+      with:
+        registry_url: docker.io
+        repository_name: viktordeilert/vdeilert
+        user_name: ${{ secret.DOCKER_USERNAME }}
+        password: ${{ secret.DOCKER_PASSWORD }}
+        image_version: latest
+        docker_file: .
