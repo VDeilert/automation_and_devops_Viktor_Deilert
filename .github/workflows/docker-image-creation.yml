@@ -22,7 +22,7 @@ jobs:
       with:
         registry_url: docker.io
         repository_name: viktordeilert/vdeilert
-        user_name: ${{ secret.DOCKER_USERNAME }}
-        password: ${{ secret.DOCKER_PASSWORD }}
+        user_name: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         image_version: latest
         docker_file: .
