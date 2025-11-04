@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: hemligt
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+env:
+  GREETINGS: "Tja fan"
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    env: 
+      GREETINGS2: "Tjena"
+      NAME: "Github Actions"
+    steps:
+      - name: Meddelanden
+        run: | 
+          echo: "Greetings: $GREETINGS"
+          echo: "Job greetings: $GREETINGS2"
+          echo: Repository: $GITHUB_REPOSITORY"
+      - name: Secret
+        run: echo "Min Secret är $MY_SECRET_NAME"
+        env:
+          MY_SECRET_NAME: ${{ secrets.MY_SECRET_NAME }}
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      TEST_GREETINGS: "Tja från testet"
+    steps:
+      - name: Visa meddelande
+        run: |
+          echo "Test körs"
+          echo "Meddelande: $TEST_GREETINGS" 
+        
+    
