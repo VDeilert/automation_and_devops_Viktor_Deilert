@@ -6,21 +6,18 @@ name: hemligt
 on:
   workflow_dispatch:
 
-env:
-  GREETINGS: "Tja fan"
-
 jobs:
   build: 
     runs-on: ubuntu-latest
     env: 
-      GREETINGS2: "Tjena"
+      GREETINGS: "Tjena"
       NAME: "Github Actions"
     steps:
       - name: Meddelanden
         run: | 
-          echo: "Greetings: $GREETINGS"
-          echo: "Job greetings: $GREETINGS2"
-          echo: Repository: $GITHUB_REPOSITORY"
+          echo "Greetings: $GREETINGS"
+          echo "Namn: $NAME"
+          echo "Repository: $GITHUB_REPOSITORY"
       - name: Secret
         run: echo "Min Secret är $MY_SECRET_NAME"
         env:
